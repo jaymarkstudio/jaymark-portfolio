@@ -1,0 +1,653 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0b0b0d;
+    color: #e8e8e8;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   BACKGROUND TEXTURE
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.08) 1px,
+        transparent 1px
+    );
+
+    background-size: 12px 12px;
+
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 210px;
+    height: 100vh;
+
+    border-right: 1px solid #29292c;
+
+    background: #0b0b0d;
+
+    z-index: 10;
+}
+
+nav {
+    height: 100%;
+
+    padding: 28px 26px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    color: #f2f2f2;
+
+    margin-bottom: 34px;
+}
+
+.nav-links,
+.nav-socials {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 11px;
+}
+
+.nav-links a,
+.nav-socials a {
+    color: #a5a5aa;
+
+    text-decoration: none;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 13px;
+
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-socials a:hover {
+    color: #ffffff;
+}
+
+.nav-divider {
+    width: 100%;
+    height: 1px;
+
+    background: #29292c;
+
+    margin: 22px 0;
+}
+
+/* Poke */
+
+.poke-button {
+    position: relative;
+
+    margin-top: 25px;
+
+    background: none;
+    border: 1px solid #29292c;
+
+    padding: 9px 12px;
+
+    color: #88888e;
+
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.poke-button:hover {
+    color: #ffffff;
+    border-color: #66666c;
+}
+
+.poke-emojis {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+
+    pointer-events: none;
+}
+
+.poke-emoji {
+    position: absolute;
+
+    font-size: 20px;
+
+    animation: pokeFloat 1.2s ease-out forwards;
+}
+ /* Music button */
+.music-button {
+    margin-top: 10px;
+    background: none;
+    border: 1px solid #29292c;
+    padding: 9px 12px;
+    color: #88888e;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.music-button:hover {
+    color: #ffffff;
+    border-color: #66666c;
+}
+
+@keyframes pokeFloat {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(1.2);
+    }
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    margin-left: 210px;
+    padding: 0 70px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+#home { 
+    min-height: 100vh; 
+ 
+    max-width: 900px; 
+ 
+    margin: 0 auto; 
+ 
+    display: flex; 
+ 
+    align-items: center; 
+ 
+    justify-content: center; 
+ 
+    gap: 65px; 
+}
+
+
+/* Portrait */
+
+ .profile-hover {
+    position: relative;
+
+    width: 285px;
+    height: 350px;
+
+    flex-shrink: 0;
+}
+
+.profile-hover img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: grayscale(100%)
+            contrast(1.25)
+            brightness(1.05);
+
+    mix-blend-mode: screen;
+
+    transition: opacity 0.35s ease;
+}
+
+.profile-hover-image {
+    opacity: 0;
+}
+
+.profile-hover:hover .profile-hover-image {
+    opacity: 1;
+}
+
+.profile-hover:hover img:first-child {
+    opacity: 0;
+}
+
+
+/* Hero text */
+
+.hero-content {
+    width: 390px;
+}
+
+.eyebrow {
+    color: #88888e;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+}
+
+.hero-content h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(58px, 7vw, 92px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+    color: #f1f1f1;
+}
+
+.hero-content h2 {
+    margin-top: 15px;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    color: #a4a4a9;
+}
+
+.hero-description {
+    max-width: 390px;
+
+    margin-top: 25px;
+
+    color: #99999f;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.hero-link {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color: #dedee2;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #55555a;
+
+    padding-bottom: 3px;
+
+    transition: border-color 0.2s ease,
+                color 0.2s ease;
+}
+
+.hero-link:hover {
+    color: #ffffff;
+
+    border-color: #ffffff;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section:not(#home) {
+    padding: 120px 0;
+
+    border-top: 1px solid #29292c;
+}
+
+.section-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #77777d;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 12px;
+
+    margin-bottom: 55px;
+}
+
+.section-content {
+    max-width: 650px;
+}
+
+.section-content h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    margin-bottom: 28px;
+
+    color: #eeeeee;
+}
+
+.section-content p {
+    max-width: 580px;
+
+    color: #96969c;
+
+    font-size: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+.project-list {
+    border-top: 1px solid #29292c;
+}
+
+.project {
+    min-height: 145px;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid #29292c;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.project-number {
+    color: #6f6f75;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 11px;
+}
+
+.project h3 {
+    margin-top: 8px;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    color: #eeeeee;
+}
+
+.project p {
+    margin-top: 7px;
+
+    color: #85858b;
+
+    font-size: 13px;
+}
+
+.project a {
+    color: #aaaab0;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 12px;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+.project a:hover {
+    color: #ffffff;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.skills-list span {
+    border: 1px solid #303035;
+
+    padding: 10px 15px;
+
+    color: #aaaab0;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 12px;
+}
+
+
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-left: 210px;
+
+    padding: 30px 70px;
+
+    border-top: 1px solid #29292c;
+
+    color: #66666c;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 11px;
+}
+
+.mail  {
+   color: #f1f1f1;
+   display: inline-flex;
+   align-items: center;
+   gap: 10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    header {
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        border-right: none;
+
+        border-bottom: 1px solid #29292c;
+    }
+ 
+    nav {
+    height: auto;
+    padding: 22px;
+} 
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .nav-links,
+    .nav-socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+    .nav-divider {
+        margin: 18px 0;
+    }
+    
+    main {
+        margin-left: 0;
+
+        padding: 0 25px;
+    }
+
+    #home { 
+    min-height: 90vh; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 35px; 
+    padding: 70px 0; 
+}
+
+    #home img {
+        width: 220px;
+        height: 270px;
+
+        order: 1;
+    }
+
+    .profile-hover {
+      width: 220px;
+      height: 270px;
+      order: 1;
+    } 
+    .hero-content {
+        width: 100%;
+        order: 2;
+    }
+
+    .hero-content h1 {
+        font-size: 65px;
+    }
+
+    section:not(#home) {
+        padding: 80px 0;
+    }
+
+    .project {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    footer {
+        margin-left: 0;
+
+        padding: 25px;
+    }
+}
+
+.click-hint {
+    position: absolute;
+    top: 25px;
+    left: -55px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    color: #77777d;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    line-height: 1;
+    transform: rotate(-8deg);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.click-arrow {
+    font-size: 18px;
+    margin-right: -2px;
+    transform: rotate(15deg);
+}
+
+.profile-hover:hover .click-hint {
+    opacity: 0;
+}
+
+/* MOBILE CLICK HINT */
+@media (max-width: 800px) {
+    .click-hint {
+        top: -10px;
+        left: -15px;
+        right: auto;
+        bottom: auto;
+
+        align-items: flex-end;
+        transform: rotate(-8deg);
+    }
+
+    .click-arrow {
+        margin-right: 3px;
+        margin-left: 0;
+        transform: rotate(15deg);
+    }
+}
